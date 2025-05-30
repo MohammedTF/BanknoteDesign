@@ -1,0 +1,117 @@
+﻿#head1 {
+    display: flex;
+    align-items: center; /* vertically center logo and nav */
+    padding: 10px 20px;
+    background-color: lightslategrey;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    border-radius: 25px;
+}
+
+#logo {
+    height: 60px;
+    width: auto;
+    margin-right: 40px;
+}
+
+#headbar {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+    #headbar li a {
+        text-decoration: none;
+        color: #fff;
+        font-weight: 600;
+        font-size: 1.1rem;
+        padding: 8px 12px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+        #headbar li a:hover,
+        #headbar li a:focus {
+            background-color: #334455;
+            color: #ffdd57;
+            outline: none;
+        }
+
+#instalogo {
+    height: 40px;
+    width: 60px;
+    margin-right: 30px;
+}
+
+#accounts {
+    display: flex;
+    align-items: center;
+    background-color: lightslategrey;
+    padding: 10px 20px;
+    border-radius: 25px;
+}
+
+#footbar {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 15px
+
+}
+
+.boody{
+    background-color: linen
+}
+
+.slogo {
+    height: 30px;
+    width: 30px;
+    align-items: center;
+    transition: transform 0.3s ease;
+}
+
+    .slogo:hover {
+        transform: translateY(-5px);
+    }
+
+
+.mtf{
+    padding-left: 600px;
+}
+#line1, #line2 {
+    border: 2px solid black;
+}
+
+.form {
+    border: 2px solid black;
+    width: 200px
+}
+
+.form, .mainform, .video1, .header1, .p1 {
+    margin-left: 400px;
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center; /* تمركز أفقي */
+    align-items: center; /* تمركز عمودي */
+    height: 100vh; /* طول الشاشة كامل */
+    background-color: #f9f9f9;
+}
+
+.mainform {
+    border: 1px solid #ccc;
+    padding: 20px 30px;
+    background: white;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    width: 450px;
+}

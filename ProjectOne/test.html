@@ -1,144 +1,423 @@
 ﻿<!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>ProjectOne</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add New Banknote</title>
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .dropdown {
+            position: relative;
+            width: 100%;
+        }
+
+        .dropdown-toggle {
+            background: white;
+            padding: 10px 12px;
+            font-size: 14px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .dropdown-menu {
+            position: absolute;
+            top: 105%;
+            left: 0;
+            right: 0;
+            max-height: 220px;
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow-y: auto;
+            z-index: 100;
+            display: none;
+        }
+
+        .dropdown-item {
+            padding: 8px 12px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+        }
+
+            .dropdown-item:hover {
+                background-color: #f0f0f0;
+            }
+
+        .flag {
+            width: 24px;
+            height: 18px;
+            object-fit: contain;
+            border-radius: 3px;
+        }
+
+        .arrow {
+            font-size: 12px;
+        }
+    </style>
 </head>
 <body>
-    <form action="/" method="post">
+    <div class="container">
+        <div class="form-container">
+            <h1>Add New Banknote 💵</h1>
+            <form id="banknoteForm">
 
-        <!--<h1>Hello word</h1>
-    <h2>Hello word</h2>
-    <h3>Hello word</h3>
-    <h4>Hello word</h4>
-    <h5>Hello word</h5>
-    <h6>Hello word</h6>
-    <br />
-    <h3>Hello word</h3>-->
-        <!--<table>
+                <!-- New Country Dropdown with Flags -->
+                <div class="form-section">
+                    <label for="country">Country 🌍</label>
+                    <div class="dropdown" id="countryDropdown">
+                        <div class="dropdown-toggle" id="dropdownToggle">
+                            <span id="selectedCountry">
+                                <img class="flag" src="https://flagcdn.com/w40/us.png" alt="Flag" />
+                                United States
+                            </span>
+                            <span class="arrow">▼</span>
+                        </div>
+                        <div class="dropdown-menu" id="dropdownMenu">
+                            <!-- Country options inserted by JavaScript -->
+                        </div>
+                    </div>
+                </div>
 
-        <thead>
-            <tr>
-                <th>name</th>
-                <th>age</th>
-                <th>country</th>
-            </tr>
-        </thead>
+                <!-- Name -->
+                <div class="form-section">
+                    <label for="name">Banknote Name 🏷️</label>
+                    <input type="text" id="name" name="name" placeholder="Enter the name of the banknote" required>
+                </div>
 
-        <tbody>
-            <tr>
-                <td>ali</td>
-                <td>22</td>
-                <td>qatar</td>
-            </tr>
-            <tr>
-                <td>mohammed</td>
-                <td>23</td>
-                <td>yemen</td>
-            </tr>
+                <!-- Price -->
+                <div class="form-section">
+                    <label for="price">Price 💰</label>
+                    <input type="number" id="price" name="price" placeholder="Enter the price" required>
+                </div>
 
-        </tbody>
+                <!-- Additional Fees -->
+                <div class="form-section" id="additional-fees-group">
+                    <label for="additional-fees">Additional Fees 💸</label>
+                    <div id="fee-inputs-container">
+                        <div class="fee-input-group">
+                            <input type="number" class="fee-amount" name="additional-fees" placeholder="Fee amount">
+                            <input type="text" class="fee-description" name="fee-description" placeholder="Describe this fee (e.g., shipping)">
+                        </div>
+                    </div>
+                    <button type="button" id="add-fee" class="add-btn">Add More Fees ➕</button>
+                </div>
 
-    </table>-->
-        <!--<style>
-        table, th, td {
-            border: 1px solid black;
-            width: 200px;
-            height: 50px;
-        }
+                <!-- Total Sum -->
+                <div class="form-section">
+                    <label for="total">Total Sum 💵</label>
+                    <div id="fee-details"></div>
+                    <span id="total" class="total-display">0.00</span>
+                </div>
 
-        th {
-            color: red;
-        }
+                <!-- PMG -->
+                <div class="form-section">
+                    <label for="pmg-toggle">Is it PMG? 💎</label>
+                    <label class="switch">
+                        <input type="checkbox" id="pmg-toggle">
+                        <span class="slider"></span>
+                    </label>
+                </div>
 
-        td {
-            background-color: lightblue;
-        }
-    </style>-->
+                <div class="form-section" id="pmg-rating-group" style="display: none;">
+                    <label for="rating">PMG Rating 🔢 (1 - 70)</label>
+                    <input type="number" id="rating" name="rating" min="1" max="70" placeholder="1 - 70">
+                </div>
 
-        <h1>Banknote Form</h1>
-        <p>مرحبا بجميع هوات تجيمع العملات </p>
-        <p>هذا الموقع مخصص لتسجيل جميع عملاتكم وحفظها  </p>
-        <hr />
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/I4YCnABMgP8?si=LnTWsQgau4V74lBd" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
-        <br />
-        <br />
-        <br />
-        <br />
-        <hr />
-        <div style="margin-bottom: 15px;">
-            <label style="display: inline-block; width: 180px; vertical-align: middle;">Name of the Banknote:</label>
-            <input type="text" style="vertical-align: middle; height: 25px; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; width: 200px;" />
+                <div class="form-section" id="non-pmg-condition-group" style="display: none;">
+                    <label for="non-pmg-condition">Condition (Good, Mint, etc.) 🏅</label>
+                    <input type="text" id="non-pmg-condition" name="non-pmg-condition" placeholder="Enter condition (e.g. Mint)">
+                </div>
+
+                <!-- Year -->
+                <div class="form-section">
+                    <label for="year">Year 📅</label>
+                    <input type="number" id="year" name="year" min="1000" max="9999" placeholder="e.g. 2012" required>
+                </div>
+
+                <!-- Store -->
+                <div class="form-section">
+                    <label for="store">Store/Instagram Handle 🏪</label>
+                    <input type="text" id="store" name="store" placeholder="Where did you buy it?" required>
+                </div>
+
+                <!-- Date -->
+                <div class="form-section">
+                    <label for="datepickerInput">Date of Buying 🗓️</label>
+                    <div class="datepicker">
+                        <div class="datepicker-display" id="datepickerInput">
+                            <span id="selectedDate">Pick a date</span>
+                            <span>📅</span>
+                        </div>
+                        <input type="hidden" id="date_bought" name="date_bought" required>
+                        <div class="calendar-popup" id="calendarPopup"></div>
+                    </div>
+                </div>
+
+                <!-- Image -->
+                <div class="form-section">
+                    <label for="image">Upload Image 📸</label>
+                    <div class="image-upload-container" id="upload-container">
+                        <div class="upload-area" id="upload-area">
+                            <div class="upload-icon">📷</div>
+                            <p>Drag & drop image here or</p>
+                            <input type="file" id="image" name="image" accept="image/*" hidden>
+                            <button type="button" class="upload-btn" id="browse-btn">Browse Files</button>
+                        </div>
+                        <div class="image-preview" id="image-preview" style="display: none;">
+                            <img id="preview-img" src="#" alt="Preview">
+                            <button type="button" class="remove-btn" id="remove-image">❌</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <div class="form-section">
+                    <button type="submit" class="submit-btn">Add Banknote 📝</button>
+                </div>
+
+            </form>
         </div>
+    </div>
 
-        <div style="margin-bottom: 15px;">
-            <label style="display: inline-block; width: 180px; vertical-align: middle;">Banknote issued date:</label>
-            <input type="number" style="vertical-align: middle; height: 25px; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; width: 200px;" />
-        </div>
+    <script src="script.js"></script>
 
-        <div style="margin-bottom: 15px;">
-            <label style="display: inline-block; width: 180px; vertical-align: middle;">Price:</label>
-            <input type="number" style="vertical-align: middle; height: 25px; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; width: 200px;" />
-        </div>
+    <!-- Country Dropdown Script -->
+    <script>
+    const countries = [
+      { name: "World", code: "globe" },
+{ name: "Afghanistan", code: "af" },
+    { name: "Albania", code: "al" },
+    { name: "Algeria", code: "dz" },
+    { name: "Andorra", code: "ad" },
+    { name: "Angola", code: "ao" },
+    { name: "Antigua and Barbuda", code: "ag" },
+    { name: "Argentina", code: "ar" },
+    { name: "Armenia", code: "am" },
+    { name: "Australia", code: "au" },
+    { name: "Austria", code: "at" },
+    { name: "Azerbaijan", code: "az" },
+    { name: "Bahamas", code: "bs" },
+    { name: "Bahrain", code: "bh" },
+    { name: "Bangladesh", code: "bd" },
+    { name: "Barbados", code: "bb" },
+    { name: "Belarus", code: "by" },
+    { name: "Belgium", code: "be" },
+    { name: "Belize", code: "bz" },
+    { name: "Benin", code: "bj" },
+    { name: "Bhutan", code: "bt" },
+    { name: "Bolivia", code: "bo" },
+    { name: "Bosnia and Herzegovina", code: "ba" },
+    { name: "Botswana", code: "bw" },
+    { name: "Brazil", code: "br" },
+    { name: "Brunei", code: "bn" },
+    { name: "Bulgaria", code: "bg" },
+    { name: "Burkina Faso", code: "bf" },
+    { name: "Burundi", code: "bi" },
+    { name: "Cabo Verde", code: "cv" },
+    { name: "Cambodia", code: "kh" },
+    { name: "Cameroon", code: "cm" },
+    { name: "Canada", code: "ca" },
+    { name: "Central African Republic", code: "cf" },
+    { name: "Chad", code: "td" },
+    { name: "Chile", code: "cl" },
+    { name: "China", code: "cn" },
+    { name: "Colombia", code: "co" },
+    { name: "Comoros", code: "km" },
+    { name: "Congo (Congo-Brazzaville)", code: "cg" },
+    { name: "Costa Rica", code: "cr" },
+    { name: "Croatia", code: "hr" },
+    { name: "Cuba", code: "cu" },
+    { name: "Cyprus", code: "cy" },
+    { name: "Czech Republic", code: "cz" },
+    { name: "Denmark", code: "dk" },
+    { name: "Djibouti", code: "dj" },
+    { name: "Dominica", code: "dm" },
+    { name: "Dominican Republic", code: "do" },
+    { name: "Ecuador", code: "ec" },
+    { name: "Egypt", code: "eg" },
+    { name: "El Salvador", code: "sv" },
+    { name: "Equatorial Guinea", code: "gq" },
+    { name: "Eritrea", code: "er" },
+    { name: "Estonia", code: "ee" },
+    { name: "Eswatini", code: "sz" },
+    { name: "Ethiopia", code: "et" },
+    { name: "Fiji", code: "fj" },
+    { name: "Finland", code: "fi" },
+    { name: "France", code: "fr" },
+    { name: "Gabon", code: "ga" },
+    { name: "Gambia", code: "gm" },
+    { name: "Georgia", code: "ge" },
+    { name: "Germany", code: "de" },
+    { name: "Ghana", code: "gh" },
+    { name: "Greece", code: "gr" },
+    { name: "Grenada", code: "gd" },
+    { name: "Guatemala", code: "gt" },
+    { name: "Guinea", code: "gn" },
+    { name: "Guinea-Bissau", code: "gw" },
+    { name: "Guyana", code: "gy" },
+    { name: "Haiti", code: "ht" },
+    { name: "Honduras", code: "hn" },
+    { name: "Hungary", code: "hu" },
+    { name: "Iceland", code: "is" },
+    { name: "India", code: "in" },
+    { name: "Indonesia", code: "id" },
+    { name: "Iran", code: "ir" },
+    { name: "Iraq", code: "iq" },
+    { name: "Ireland", code: "ie" },
+    { name: "Israel occupation (TERRORIST)", code: "il" },
+    { name: "Italy", code: "it" },
+    { name: "Jamaica", code: "jm" },
+    { name: "Japan", code: "jp" },
+    { name: "Jordan", code: "jo" },
+    { name: "Kazakhstan", code: "kz" },
+    { name: "Kenya", code: "ke" },
+    { name: "Kiribati", code: "ki" },
+    { name: "Kuwait", code: "kw" },
+    { name: "Kyrgyzstan", code: "kg" },
+    { name: "Laos", code: "la" },
+    { name: "Latvia", code: "lv" },
+    { name: "Lebanon", code: "lb" },
+    { name: "Lesotho", code: "ls" },
+    { name: "Liberia", code: "lr" },
+    { name: "Libya", code: "ly" },
+    { name: "Liechtenstein", code: "li" },
+    { name: "Lithuania", code: "lt" },
+    { name: "Luxembourg", code: "lu" },
+    { name: "Madagascar", code: "mg" },
+    { name: "Malawi", code: "mw" },
+    { name: "Malaysia", code: "my" },
+    { name: "Maldives", code: "mv" },
+    { name: "Mali", code: "ml" },
+    { name: "Malta", code: "mt" },
+    { name: "Marshall Islands", code: "mh" },
+    { name: "Mauritania", code: "mr" },
+    { name: "Mauritius", code: "mu" },
+    { name: "Mexico", code: "mx" },
+    { name: "Micronesia", code: "fm" },
+    { name: "Moldova", code: "md" },
+    { name: "Monaco", code: "mc" },
+    { name: "Mongolia", code: "mn" },
+    { name: "Montenegro", code: "me" },
+    { name: "Morocco", code: "ma" },
+    { name: "Mozambique", code: "mz" },
+    { name: "Myanmar", code: "mm" },
+    { name: "Namibia", code: "na" },
+    { name: "Nauru", code: "nr" },
+    { name: "Nepal", code: "np" },
+    { name: "Netherlands", code: "nl" },
+    { name: "New Zealand", code: "nz" },
+    { name: "Nicaragua", code: "ni" },
+    { name: "Niger", code: "ne" },
+    { name: "Nigeria", code: "ng" },
+    { name: "North Korea", code: "kp" },
+    { name: "North Macedonia", code: "mk" },
+    { name: "Norway", code: "no" },
+    { name: "Oman", code: "om" },
+    { name: "Pakistan", code: "pk" },
+    { name: "Palau", code: "pw" },
+    { name: "Palestine", code: "ps" },
+    { name: "Panama", code: "pa" },
+    { name: "Papua New Guinea", code: "pg" },
+    { name: "Paraguay", code: "py" },
+    { name: "Peru", code: "pe" },
+    { name: "Philippines", code: "ph" },
+    { name: "Poland", code: "pl" },
+    { name: "Portugal", code: "pt" },
+    { name: "Qatar", code: "qa" },
+    { name: "Romania", code: "ro" },
+    { name: "Russia", code: "ru" },
+    { name: "Rwanda", code: "rw" },
+    { name: "Saint Kitts and Nevis", code: "kn" },
+    { name: "Saint Lucia", code: "lc" },
+    { name: "Saint Vincent and the Grenadines", code: "vc" },
+    { name: "Samoa", code: "ws" },
+    { name: "San Marino", code: "sm" },
+    { name: "Sao Tome and Principe", code: "st" },
+    { name: "Saudi Arabia", code: "sa" },
+    { name: "Senegal", code: "sn" },
+    { name: "Serbia", code: "rs" },
+    { name: "Seychelles", code: "sc" },
+    { name: "Sierra Leone", code: "sl" },
+    { name: "Singapore", code: "sg" },
+    { name: "Slovakia", code: "sk" },
+    { name: "Slovenia", code: "si" },
+    { name: "Solomon Islands", code: "sb" },
+    { name: "Somalia", code: "so" },
+    { name: "South Africa", code: "za" },
+    { name: "South Korea", code: "kr" },
+    { name: "South Sudan", code: "ss" },
+    { name: "Spain", code: "es" },
+    { name: "Sri Lanka", code: "lk" },
+    { name: "Sudan", code: "sd" },
+    { name: "Suriname", code: "sr" },
+    { name: "Sweden", code: "se" },
+    { name: "Switzerland", code: "ch" },
+    { name: "Syria", code: "sy" },
+    { name: "Taiwan", code: "tw" },
+    { name: "Tajikistan", code: "tj" },
+    { name: "Tanzania", code: "tz" },
+    { name: "Thailand", code: "th" },
+    { name: "Timor-Leste", code: "tl" },
+    { name: "Togo", code: "tg" },
+    { name: "Tonga", code: "to" },
+    { name: "Trinidad and Tobago", code: "tt" },
+    { name: "Tunisia", code: "tn" },
+    { name: "Turkey", code: "tr" },
+    { name: "Turkmenistan", code: "tm" },
+    { name: "Tuvalu", code: "tv" },
+    { name: "Uganda", code: "ug" },
+    { name: "Ukraine", code: "ua" },
+    { name: "United Arab Emirates", code: "ae" },
+    { name: "United Kingdom", code: "gb" },
+    { name: "United States", code: "us" },
+    { name: "Uruguay", code: "uy" },
+    { name: "Uzbekistan", code: "uz" },
+    { name: "Vanuatu", code: "vu" },
+    { name: "Vatican City", code: "va" },
+    { name: "Venezuela", code: "ve" },
+    { name: "Vietnam", code: "vn" },
+    { name: "Yemen", code: "ye" },
+    { name: "Zambia", code: "zm" },
+    { name: "Zimbabwe", code: "zw" }
+  ];
 
-        <div style="margin-bottom: 15px;">
-            <label style="display: inline-block; width: 180px; vertical-align: middle;">Country of the Banknote:</label>
-            <input type="text" style="vertical-align: middle; height: 25px; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; width: 200px;" />
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label style="display: inline-block; width: 180px; vertical-align: middle;">Date of preuches:</label>
-            <input type="date" style="vertical-align: middle; height: 25px; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; width: 200px;" />
-        </div>
-        </div>
-        <div style="margin-bottom: 15px;">
-            <label style="display: inline-block; width: 180px; vertical-align: middle;">Photo of the Banknote:</label>
-            <input type="file" style="vertical-align: middle; height: 25px; padding: 3px 6px; border: 1px solid #ccc; border-radius: 4px; width: 200px;" />
-        </div>
+    const toggle = document.getElementById('dropdownToggle');
+    const menu = document.getElementById('dropdownMenu');
+    const selected = document.getElementById('selectedCountry');
 
-        <h2>choose curse:</h2>
-        <input type="radio" value="PMG" name="PMGs" />
-        <label>PMG</label>
-        <input type="radio" value="Non-PMG" name="PMGs" />
-        <label>Not a PMG</label>
-        <br />
-        <br />
+    toggle.addEventListener('click', () => {
+      menu.style.display = menu.style.display === 'block' ? 'none' : 'block';
+    });
 
-        <input type="checkbox" value="gen1" name="gens" />
-        <label>Generation 1</label>
-        <br />
-        <input type="checkbox" value="gen2" name="gens" />
-        <label>Generation 2</label>
-        <br />
-        <input type="checkbox" value="gen3" name="gens" />
-        <label>Generation 3</label>
-        <br />
-        <input type="checkbox" value="gen4" name="gens" />
-        <label>Generation 4</label>
-        <br />
-        <input type="checkbox" value="gen5" name="gens" />
-        <label>Generation 5</label>
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
-        <br />
+    document.addEventListener('click', (e) => {
+      if (!e.target.closest('.dropdown')) {
+        menu.style.display = 'none';
+      }
+    });
 
-
-    </form>
+    countries.forEach(country => {
+      const item = document.createElement('div');
+      item.className = 'dropdown-item';
+      item.innerHTML = `
+        <img class="flag" src="https://flagcdn.com/w40/${country.code}.png" alt="${country.name} flag" />
+        <span>${country.name}</span>
+      `;
+      item.addEventListener('click', () => {
+        selected.innerHTML = `
+          <img class="flag" src="https://flagcdn.com/w40/${country.code}.png" alt="${country.name} flag" />
+          ${country.name}
+        `;
+        menu.style.display = 'none';
+      });
+      menu.appendChild(item);
+    });
+    </script>
 </body>
 </html>
